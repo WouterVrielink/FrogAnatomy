@@ -13,22 +13,21 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-<!--   <a-scene embedded arjs="trackingMethod: best;">
+  <a-scene embedded arjs="trackingMethod: best;">
       <a-anchor hit-testing-enabled='true'>
-          <a-box position="0 0 0" material="opacity: 0.5;"></a-box>
           <a-entity></a-entity>
       </a-anchor>
     <a-camera-static/>
-  </a-scene> -->
-
-  <a-scene>
-      <a-entity></a-entity>
   </a-scene>
+
+<!--   <a-scene>
+      <a-entity></a-entity>
+  </a-scene> -->
 
   <script>
 
       var container, stats;
-console.log("HALLOOOOOOOOO___+++++++++++");
+
       var camera, controls, scene, renderer;
 
       var cross;
@@ -52,7 +51,7 @@ console.log("HALLOOOOOOOOO___+++++++++++");
           var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
           var mesh = new THREE.Mesh( geometry, material );
 
-          mesh.position.set( 0, 1.4, -1 );
+          mesh.position.set( 0, 0, 0 );
           mesh.scale.multiplyScalar( 0.001 );
 
 
@@ -68,7 +67,7 @@ console.log("HALLOOOOOOOOO___+++++++++++");
           var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
           var mesh = new THREE.Mesh( geometry, material );
 
-          mesh.position.set( 0, 1.4, -1 );
+          mesh.position.set( 0, 0, 0 );
           mesh.scale.multiplyScalar( 0.001 );
 
 
