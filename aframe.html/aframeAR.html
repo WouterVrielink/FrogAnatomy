@@ -2,30 +2,33 @@
 <html>
 <head>
   <title>Aframe</title>
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="../aframe/aframe.min.js"></script>
   <script src='../three/js/libs/inflate.min.js'></script>
   <script src="../three/build/three.js"></script>
   <script src="../three/js/controls/TrackballControls.js"></script>
   <script src="../three/js/loaders/VTKLoader.js"></script>
   <script src="../three/js/Detector.js"></script>
   <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+  <script src="../aframe/aframe-ar.js"></script>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs="trackingMethod: best;">
+<!--   <a-scene embedded arjs="trackingMethod: best;">
       <a-anchor hit-testing-enabled='true'>
-          <!-- <a-box position="0 0 0" material="opacity: 0.5;"></a-box> -->
-          <a-entity pierre="color: green;" position="0 0 0"> </a-entity>
+          <a-box position="0 0 0" material="opacity: 0.5;"></a-box>
+          <a-entity></a-entity>
       </a-anchor>
     <a-camera-static/>
+  </a-scene> -->
+
+  <a-scene>
+      <a-entity></a-entity>
   </a-scene>
 
   <script>
 
       var container, stats;
-
+console.log("HALLOOOOOOOOO___+++++++++++");
       var camera, controls, scene, renderer;
 
       var cross;
@@ -35,7 +38,7 @@
 
       function init() {
 
-        scene = document.querySelector('a-scene').object3D;
+        scene = document.querySelector('a-entity').object3D;
 
         // light
 
@@ -49,7 +52,7 @@
           var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
           var mesh = new THREE.Mesh( geometry, material );
 
-          mesh.position.set( 0, 0, 0 );
+          mesh.position.set( 0, 1.4, -1 );
           mesh.scale.multiplyScalar( 0.001 );
 
 
@@ -65,7 +68,7 @@
           var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
           var mesh = new THREE.Mesh( geometry, material );
 
-          mesh.position.set( 0, 0, 0 );
+          mesh.position.set( 0, 1.4, -1 );
           mesh.scale.multiplyScalar( 0.001 );
 
 
