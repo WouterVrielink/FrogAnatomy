@@ -22,13 +22,12 @@
 
   <script>
     init();
-    // animate();
 
     function init() {
       scene = document.querySelector('a-entity').object3D;
 
       var beeybeey;
-      var rot = {x: 90, y: 0, z: 0};
+      var rot = { x: 90, y: 0, z: 0 };
       var scale = 0.002;
 
       var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
