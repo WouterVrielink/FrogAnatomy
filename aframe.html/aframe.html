@@ -19,12 +19,6 @@
 
   <script>
 
-      var container, stats;
-
-      var camera, controls, scene, renderer;
-
-      var cross;
-
       init();
       // animate();
 
@@ -67,28 +61,6 @@
 					scene.add( mesh );
 
 				} );
-
-      }
-
-      function onWindowResize() {
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize( window.innerWidth, window.innerHeight );
-
-        controls.handleResize();
-
-      }
-
-      function animate() {
-
-        requestAnimationFrame( animate );
-
-        controls.update();
-        renderer.render( scene, camera );
-
-        stats.update();
 
       }
 
