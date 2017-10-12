@@ -14,57 +14,37 @@
 </head>
 <body>
   <a-scene embedded arjs="trackingMethod: best;">
-      <a-anchor hit-testing-enabled='true'>
-          <a-entity></a-entity>
-      </a-anchor>
+    <a-anchor hit-testing-enabled='true'>
+      <a-entity></a-entity>
+    </a-anchor>
     <a-camera-static/>
   </a-scene>
 
-<!--   <a-scene>
-      <a-entity></a-entity>
-  </a-scene> -->
-
   <script>
+    init();
+    // animate();
 
-      var container, stats;
+    function init() {
+      scene = document.querySelector('a-entity').object3D;
 
-      var camera, controls, scene, renderer;
+      var beeybeey;
+      var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
 
-      var cross;
+      var loader1 = new THREE.VTKLoader();
+      loader1.load( '../vtkaas/pierre_t_s_d.vtk', function ( geometry ) {
 
-      init();
-      // animate();
+        geometry.computeVertexNormals();
+        geometry.center();
+        beeybeey = geometry.boundingBox.min
 
-      function init() {
-<<<<<<< HEAD
-        scene = document.querySelector('a-scene').object3D;
-        // console.log(scene);
-=======
+        var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
+        var mesh = new THREE.Mesh( geometry, material );
 
-        scene = document.querySelector('a-entity').object3D;
+        mesh.position.set( 0, 0, 0 );
+        mesh.scale.multiplyScalar( 0.002 );
+        rotateObject( mesh, 90, 0 ,0);
 
->>>>>>> afe718a316082eb0be32e60e6db5e51e19a5a0c0
-        // light
-
-        var beeybeey;
-
-        var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
-
-        var loader1 = new THREE.VTKLoader();
-        loader1.load( '../vtkaas/pierre_t_s_d.vtk', function ( geometry ) {
-
-          geometry.computeVertexNormals();
-          geometry.center();
-          beeybeey = geometry.boundingBox.min
-
-          var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
-          var mesh = new THREE.Mesh( geometry, material );
-
-          mesh.position.set( 0, 0, 0 );
-          mesh.scale.multiplyScalar( 0.002 );
-          rotateObject( mesh, 90, 0 ,0);
-
-          scene.add( mesh );
+        scene.add( mesh );
 
         var loader3 = new THREE.VTKLoader();
         loader3.load( '../vtkaas/pierre_t_s_d_stomach.vtk', function ( geometry ) {
@@ -83,49 +63,20 @@
 
           scene.add( mesh );
 
-        } );
+        });
 
-        } );
+      });
+    }
 
+    function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0){
+      degreeX = (degreeX * Math.PI)/180;
+      degreeY = (degreeY * Math.PI)/180;
+      degreeZ = (degreeZ * Math.PI)/180;
 
-
-      }
-
-      function onWindowResize() {
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize( window.innerWidth, window.innerHeight );
-
-        controls.handleResize();
-
-      }
-
-      function animate() {
-
-        requestAnimationFrame( animate );
-
-        controls.update();
-        renderer.render( scene, camera );
-
-        stats.update();
-
-      }
-
-      function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0){
-
-         degreeX = (degreeX * Math.PI)/180;
-         degreeY = (degreeY * Math.PI)/180;
-         degreeZ = (degreeZ * Math.PI)/180;
-
-         object.rotateX(degreeX);
-         object.rotateY(degreeY);
-         object.rotateZ(degreeZ);
-
-      }
-
-
-    </script>
+      object.rotateX(degreeX);
+      object.rotateY(degreeY);
+      object.rotateZ(degreeZ);
+    }
+  </script>
 </body>
 </html>
