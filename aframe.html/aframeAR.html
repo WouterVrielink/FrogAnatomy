@@ -9,14 +9,14 @@
   <script src="../three/js/loaders/VTKLoader.js"></script>
   <script src="../three/js/Detector.js"></script>
   <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+  <!-- <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script> -->
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
-<body style='margin : 0px; overflow: hidden;'>
+<body>
   <a-scene embedded arjs="trackingMethod: best;">
       <a-anchor hit-testing-enabled='true'>
-          <!-- <a-box position="0 0 0" material="opacity: 0.5;"></a-box> -->
+          <a-box position="0 0 0" material="opacity: 0.5;"></a-box>
           <a-entity pierre="color: green;" position="0 0 0"> </a-entity>
       </a-anchor>
     <a-camera-static/>
@@ -34,9 +34,8 @@
       // animate();
 
       function init() {
-
         scene = document.querySelector('a-scene').object3D;
-
+        // console.log(scene);
         // light
 
         var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
