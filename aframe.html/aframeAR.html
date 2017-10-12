@@ -28,6 +28,9 @@
       scene = document.querySelector('a-entity').object3D;
 
       var beeybeey;
+      var rot = {x: 90, y: 0, z: 0};
+      var scale = 0.002;
+
       var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
 
       var loader1 = new THREE.VTKLoader();
@@ -41,8 +44,8 @@
         var mesh = new THREE.Mesh( geometry, material );
 
         mesh.position.set( 0, 0, 0 );
-        mesh.scale.multiplyScalar( 0.002 );
-        rotateObject( mesh, 90, 0 ,0);
+        mesh.scale.multiplyScalar( scale );
+        rotateObject( mesh, rot.x, rot.y , rot.z );
 
         scene.add( mesh );
 
@@ -51,20 +54,17 @@
 
           geometry.computeVertexNormals();
           geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z)
-          // geometry.center();
-          // console.log(geometry.boundingBox.max)
 
           var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
           var mesh = new THREE.Mesh( geometry, material );
 
           mesh.position.set( 0, 0, 0 );
-          mesh.scale.multiplyScalar( 0.002 );
-          rotateObject( mesh, 90, 0 ,0);
+          mesh.scale.multiplyScalar( scale );
+          rotateObject( mesh, rot.x, rot.y , rot.z );
 
           scene.add( mesh );
 
         });
-
       });
     }
 
