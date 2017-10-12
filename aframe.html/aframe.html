@@ -1,11 +1,219 @@
-<!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs='trackingMethod: best;'>
-      <a-anchor hit-testing-enabled='true'>
-      <a-sphere position='0 0.5 0' material='opacity: 0.5;'></a-sphere>
-      </a-anchor>
-    <a-camera-static/>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aframe</title>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src='../three.js-master/three.js-master/examples/js/libs/inflate.min.js'></script>
+  <script src="../three.js-master/three.js-master/examples/../build/three.js"></script>
+  <script src="../three.js-master/three.js-master/examples/js/controls/TrackballControls.js"></script>
+  <script src="../three.js-master/three.js-master/examples/js/loaders/VTKLoader.js"></script>
+  <script src="../three.js-master/three.js-master/examples/js/Detector.js"></script>
+  <script src="../three.js-master/three.js-master/examples/js/libs/stats.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<!-- 
+  <style>
+    body {
+      font-family: Monospace;
+      background-color: #000;
+      color: #fff;
+      margin: 0px;
+      overflow: hidden;
+    }
+    #info {
+      color: #fff;
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      z-index: 100;
+      display:block;
+    }
+    #info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
+  </style> -->
+
+</head>
+<body>
+
+
+
+  <script>
+
+      if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+      var container, stats;
+
+      var camera, controls, scene, renderer;
+
+      var cross;
+
+      init();
+      // animate();
+
+      function init() {
+
+        camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 1e10 );
+        camera.position.z = 0.2;
+
+        controls = new THREE.TrackballControls( camera );
+
+        controls.rotateSpeed = 5.0;
+        controls.zoomSpeed = 5;
+        controls.panSpeed = 2;
+
+        controls.noZoom = false;
+        controls.noPan = false;
+
+        controls.staticMoving = true;
+        controls.dynamicDampingFactor = 0.3;
+
+        scene = document.querySelector('a-scene').object3D;
+
+        scene.add( camera );
+
+        // light
+
+        var dirLight = new THREE.DirectionalLight( 0xffffff );
+        dirLight.position.set( 200, 200, 1000 ).normalize();
+
+        camera.add( dirLight );
+        camera.add( dirLight.target );
+
+        var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
+
+        var loader1 = new THREE.VTKLoader();
+        loader1.load( '../three.js-master/three.js-master/examples/models/vtk/pierre_t_s_d.vtk', function ( geometry ) {
+
+          geometry.computeVertexNormals();
+          geometry.center();
+
+          var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
+          var mesh = new THREE.Mesh( geometry, material );
+
+          mesh.position.set( 0, 0, 0 );
+          mesh.scale.multiplyScalar( 0.0001 );
+
+
+          scene.add( mesh );
+
+        } );
+
+        var loader3 = new THREE.VTKLoader();
+        loader3.load( '../three.js-master/three.js-master/examples/models/vtk/pierre_t_s_d_stomach.vtk', function ( geometry ) {
+
+          geometry.computeVertexNormals();
+          geometry.center();
+
+          var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
+          var mesh = new THREE.Mesh( geometry, material );
+
+          mesh.position.set( 0, 0, 0 );
+          mesh.scale.multiplyScalar( 0.0001 );
+
+
+          scene.add( mesh );
+
+        } );
+
+        // renderer
+
+        // renderer = new THREE.WebGLRenderer( { antialias: false } );
+        // renderer.setPixelRatio( window.devicePixelRatio );
+        // renderer.setSize( window.innerWidth, window.innerHeight );
+
+        // container = document.createElement( 'div' );
+        // document.body.appendChild( container );
+        // container.appendChild( renderer.domElement );
+
+        // stats = new Stats();
+        // container.appendChild( stats.dom );
+
+        // //
+
+        // window.addEventListener( 'resize', onWindowResize, false );
+
+      }
+
+      function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+        controls.handleResize();
+
+      }
+
+      function animate() {
+
+        requestAnimationFrame( animate );
+
+        controls.update();
+        renderer.render( scene, camera );
+
+        stats.update();
+
+      }
+
+    </script>
+
+<script>
+// AFRAME.registerComponent('mythreejsthing', {
+//   schema: {
+//     color: {
+//       default: '#000'
+//     },
+//   },
+
+//   update: function() {
+//     var material = new THREE.MeshBasicMaterial({
+//       color: this.data.color,
+//       wireframe: true
+//     });
+
+//     var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+//     this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
+//   },
+
+//   remove: function() {
+//     this.el.removeObject3D('mesh');
+//   }
+// });
+
+document.querySelector('a-entity').sceneEl.object3D;
+
+AFRAME.registerComponent('pierre', {
+  schema: {
+    color: {
+      default: '#000'
+    },
+  },
+
+  update: function() {
+    var material = new THREE.MeshBasicMaterial({
+      color: this.data.color,
+      wireframe: true
+    });
+
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+
+    this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
+  },
+
+  remove: function() {
+    this.el.removeObject3D('mesh');
+  }
+});
+</script>
+ <a-scene>
+    <!-- <a-box color="#03A9F4" width="2" height="1" depth="1" position="0 0 0"></a-box>
+    <a-entity mythreejsthing="color: green;" position="0 1 -5"> </a-entity> -->
+    <a-entity pierre="color: green;" position="0 0 -7"> </a-entity>
   </a-scene>
+
+
+
 </body>
+</html>
