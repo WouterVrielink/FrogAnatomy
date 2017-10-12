@@ -13,40 +13,11 @@
 </head>
 <body>
 
-  <script>
-    AFRAME.registerComponent('pierre', {
-      schema: {
-        color: {
-          default: '#000'
-        },
-      },
-
-      update: function() {
-        var material = new THREE.MeshBasicMaterial({
-          color: this.data.color,
-          wireframe: true
-        });
-
-        var geometry = new THREE.BoxGeometry(1, 1, 1);
-
-        this.el.setObject3D('mesh', new THREE.Mesh(geometry, material));
-      },
-
-      remove: function() {
-        this.el.removeObject3D('mesh');
-      }
-    });
-  </script>
-
   <a-scene>
-    <!-- <a-box color="#03A9F4" width="2" height="1" depth="1" position="0 0 0"></a-box>
-    <a-entity mythreejsthing="color: green;" position="0 1 -5"> </a-entity> -->
     <a-entity pierre="color: green;" position="0 0 -7"> </a-entity>
   </a-scene>
 
   <script>
-
-      // if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
       var container, stats;
 
@@ -69,12 +40,11 @@
 				loader1.load( '../vtkaas/pierre_t_s_d.vtk', function ( geometry ) {
 
 					geometry.computeVertexNormals();
-					geometry.center();
 
 					var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
 					var mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( 0, 0, 0 );
+					mesh.position.set( 0, 1.5, -7 );
 					mesh.scale.multiplyScalar( 0.001 );
 
 
@@ -86,12 +56,11 @@
 				loader3.load( '../vtkaas/pierre_t_s_d_stomach.vtk', function ( geometry ) {
 
 					geometry.computeVertexNormals();
-					geometry.center();
 
 					var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
 					var mesh = new THREE.Mesh( geometry, material );
 
-					mesh.position.set( 0, 0, 0 );
+					mesh.position.set( 0, 1.5, -7 );
 					mesh.scale.multiplyScalar( 0.001 );
 
 
