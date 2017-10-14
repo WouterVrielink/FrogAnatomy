@@ -8250,13 +8250,13 @@ AFRAME.registerComponent('arjs-hit-testing', {
       hitTesting.enabled = _this.data.enabled
       
       // tango only - picking to set object position
-      renderer.domElement.addEventListener("click", function(domEvent){
-        var hitTestResults = hitTesting.testDomEvent(domEvent)
-        if( hitTestResults.length === 0 ) return
+      // renderer.domElement.addEventListener("click", function(domEvent){
+      //   var hitTestResults = hitTesting.testDomEvent(domEvent)
+      //   if( hitTestResults.length === 0 ) return
 
-        var hitTestResult = hitTestResults[0]
-        hitTestResult.apply(arAnchor.object3d)
-      })
+      //   var hitTestResult = hitTestResults[0]
+      //   hitTestResult.apply(arAnchor.object3d)
+      // })
       
       _this.isReady = true
     }, 1000/60)
