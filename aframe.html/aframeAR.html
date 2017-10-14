@@ -24,7 +24,7 @@
     init();
 
     function init() {
-      scene = document.querySelector('a-entity').object3D;
+      var scene = document.querySelector('a-entity').object3D;
 
       var beeybeey;
       var rot = { x: 90, y: 0, z: 0 };
@@ -39,7 +39,7 @@
         geometry.center();
         beeybeey = geometry.boundingBox.min
 
-        var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
+        var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
         var mesh = new THREE.Mesh( geometry, material );
 
         mesh.position.set( 0, 0, 0 );
@@ -48,23 +48,32 @@
 
         scene.add( mesh );
 
-        var loader3 = new THREE.VTKLoader();
-        loader3.load( '../vtkaas/pierre_t_s_d_stomach.vtk', function ( geometry ) {
+        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5);
 
-          geometry.computeVertexNormals();
-          geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z)
-
-          var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
-          var mesh = new THREE.Mesh( geometry, material );
-
-          mesh.position.set( 0, 0, 0 );
-          mesh.scale.multiplyScalar( scale );
-          rotateObject( mesh, rot.x, rot.y , rot.z );
-
-          scene.add( mesh );
-
-        });
       });
+    }
+
+    function load_vtk(fileName, scene, rot, scale, beeybeey, color, opacity) {
+      var loader = new THREE.VTKLoader();
+
+      loader.load( fileName, function ( geometry ) {
+
+        geometry.computeVertexNormals();
+        geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z)
+
+        var material = new THREE.MeshLambertMaterial( { color: color, opacity: opacity, side: THREE.DoubleSide } );
+        var mesh = new THREE.Mesh( geometry, material );
+
+        mesh.position.set( 0, 0, 0 );
+        mesh.scale.multiplyScalar( scale );
+        rotateObject( mesh, rot.x, rot.y, rot.z );
+
+        scene.add( mesh );
+
+        return geometry
+      })
+
+      return beeybeey ;
     }
 
     function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0) {
