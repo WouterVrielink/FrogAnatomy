@@ -33,11 +33,19 @@
   top:0%;
   z-index: 1;
 }
-
 .navbar {
   position:absolute;
   top:0%;
   z-index: 1;
+}
+.navbar-brand {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.navbar-light .navbar-toggler {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
 </style>
@@ -100,14 +108,14 @@
   </a-scene>
 
   <script>
-    var meshesh = Array(16);
+    var meshesh = {};
     var mesh;
 
     var onClick = function() {
       console.log("oihgsdiodghgui");
-      meshesh[15].material.color = new THREE.Color(0xffffff * Math.random());
-      meshesh[15].material.opacity = Math.random()
-      meshesh[15].material.needsUpdate = true;
+      meshesh["Stomach"].material.color = new THREE.Color(0xffffff * Math.random());
+      meshesh["Stomach"].material.opacity = Math.random()
+      meshesh["Stomach"].material.needsUpdate = true;
     };
 
 
@@ -133,7 +141,7 @@
 
         var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
         var mesh = new THREE.Mesh( geometry, material );
-        meshesh[13] = mesh;
+        meshesh["Bones"] = mesh;
 
         mesh.position.set( 0, 0, 0 );
         mesh.scale.multiplyScalar( scale );
@@ -141,7 +149,7 @@
 
         scene.add( mesh );
 
-        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5, 15);
+        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5, "Stomach");
 
       });
     }
