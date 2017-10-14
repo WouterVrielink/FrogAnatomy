@@ -65,7 +65,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link">Default</a>
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" onclick="backToDefault()">Default</a>
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           BodyParts
         </a>
@@ -73,28 +73,28 @@
           <table class="table">
             <tbody>
               <tr>
-                <td onclick="ChangeStuff('Skin')">Skin</td>
-                <td onclick="ChangeStuff('Blood')">Blood</td>
-                <td onclick="ChangeStuff('Brain')">Brain</td>
-                <td onclick="ChangeStuff('Duodenum')">Duodenum</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Skin')">Skin</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Blood')">Blood</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Brain')">Brain</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Duodenum')">Duodenum</td>
               </tr>
               <tr>
-                <td onclick="ChangeStuff('EyeRetina')">Eye Retina</td>
-                <td onclick="ChangeStuff('EyeWhite')">Eye White</td>
-                <td onclick="ChangeStuff('Heart')">Heart</td>
-                <td onclick="ChangeStuff('Ileum')">Ileum</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('EyeRetina')">Eye Retina</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('EyeWhite')">Eye White</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Heart')">Heart</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Ileum')">Ileum</td>
               </tr>
               <tr>
-                <td onclick="ChangeStuff('Kidney')">Kidney</td>
-                <td onclick="ChangeStuff('LargeIntestine')">Large Intestine</td>
-                <td onclick="ChangeStuff('Liver')">Liver</td>
-                <td onclick="ChangeStuff('Lung')">Lung</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Kidney')">Kidney</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('LargeIntestine')">Large Intestine</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Liver')">Liver</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Lung')">Lung</td>
               </tr>
               <tr>
-                <td onclick="ChangeStuff('Nerve')">Nerve</td>
-                <td onclick="ChangeStuff('Skeleton')">Skeleton</td>
-                <td onclick="ChangeStuff('Spleen')">Spleen</td>
-                <td onclick="ChangeStuff('Stomach')">Stomach</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Nerve')">Nerve</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Skeleton')">Skeleton</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Spleen')">Spleen</td>
+                <td onmouseover="" style="cursor: pointer;" onclick="ChangeStuff('Stomach')">Stomach</td>
               </tr>
             </tbody>
           </table>
@@ -104,7 +104,6 @@
   </div>
   </nav>
   </div>
-  <input type="button" id="button" value="Change Color" />
   <a-scene embedded arjs="trackingMethod: best;">
     <a-anchor hit-testing-enabled='true'>
       <a-entity style="opacity:0.5;"></a-entity>
@@ -114,17 +113,9 @@
 
   <script>
     var meshesh = {};
+    var color_codes = {"Skeleton" : 0xf0f0f0, "Stomach" : 0x858500};
+    var organs = Object.keys(color_codes);
     var mesh;
-
-    var onClick = function() {
-      console.log("oihgsdiodghgui");
-      meshesh["Stomach"].material.color = new THREE.Color(0xffffff * Math.random());
-      meshesh["Stomach"].material.opacity = Math.random()
-      meshesh["Stomach"].material.needsUpdate = true;
-    };
-
-
-    $('#button').click(onClick);
 
     init();
 
@@ -135,8 +126,6 @@
       var rot = { x: 90, y: 0, z: 0 };
       var scale = 0.002;
 
-      var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
-
       var loader1 = new THREE.VTKLoader();
       loader1.load( '../vtkaas/pierre_t_s_d.vtk', function ( geometry ) {
 
@@ -146,7 +135,7 @@
 
         var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
         var mesh = new THREE.Mesh( geometry, material );
-        meshesh["Bones"] = mesh;
+        meshesh["Skeleton"] = mesh;
 
         mesh.position.set( 0, 0, 0 );
         mesh.scale.multiplyScalar( scale );
@@ -154,7 +143,7 @@
 
         scene.add( mesh );
 
-        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5, "Stomach");
+        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 1, "Stomach");
 
       });
     }
@@ -192,7 +181,16 @@
     }
 
     function ChangeStuff(organ) {
-      console.log(organ);
+      meshesh[organ].material.color = new THREE.Color(0xffffff * Math.random());
+      meshesh[organ].material.opacity = Math.random()
+      meshesh[organ].material.needsUpdate = true;
+    }
+
+    function backToDefault() {
+      for (var i = organs.length - 1; i >= 0; i--) {
+        meshesh[organs[i]].material.color = new THREE.Color(color_codes[organs[i]]);
+        meshesh[organs[i]].material.needsUpdate = true;
+      }
     }
 
   </script>
