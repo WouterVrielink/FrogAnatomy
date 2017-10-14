@@ -15,6 +15,9 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
 <style>
+#a-scene {
+  position: absolute;
+}
 #canvas {
   position: absolute;
   background-color:lightgrey
@@ -22,7 +25,8 @@
 #button {
   position:absolute;
   left:0%;
-  top:0%
+  top:0%;
+  z-index: 1;
 }
 </style>
 </head>
@@ -42,9 +46,9 @@
 
     var onClick = function() {
       console.log("oihgsdiodghgui");
-      meshesh[13].material.color = new THREE.Color(0xffffff * Math.random());
-      meshesh[13].material.opacity = Math.random()
-      meshesh[13].material.needsUpdate = true;
+      meshesh[15].material.color = new THREE.Color(0xffffff * Math.random());
+      meshesh[15].material.opacity = Math.random()
+      meshesh[15].material.needsUpdate = true;
     };
 
 
@@ -78,7 +82,7 @@
 
         scene.add( mesh );
 
-        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5, );
+        load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 0.5, 15);
 
       });
     }
