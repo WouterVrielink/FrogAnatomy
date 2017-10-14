@@ -10,17 +10,33 @@
   <script src="../three/js/Detector.js"></script>
   <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
   <script src="../aframe/aframe-ar.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
+  <input type="button" id="button" value="Change Color" />
   <a-scene embedded arjs="trackingMethod: best;">
     <a-anchor hit-testing-enabled='true'>
-      <a-entity></a-entity>
+      <a-entity style="opacity:0.5;"></a-entity>
     </a-anchor>
     <a-camera-static/>
   </a-scene>
 
   <script>
+    var meshesh= [];
+    var mesh;
+
+    var onClick = function() {
+      console.log("oihgsdiodghgui");
+      mesh.material.color = new THREE.Color(0xffffff * Math.random());
+      mesh.material.opacity = Math.random()
+      mesh.material.needsUpdate = true;
+    };
+
+
+    $('#button').click(onClick);
+
     init();
 
     function init() {
@@ -40,7 +56,7 @@
         beeybeey = geometry.boundingBox.min
 
         var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
-        var mesh = new THREE.Mesh( geometry, material );
+        mesh = new THREE.Mesh( geometry, material );
 
         mesh.position.set( 0, 0, 0 );
         mesh.scale.multiplyScalar( scale );
@@ -54,14 +70,21 @@
           geometry.computeVertexNormals();
           geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z)
 
-          var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
-          var mesh = new THREE.Mesh( geometry, material );
+          var material = new THREE.MeshLambertMaterial( { color: 0xff0000, side: THREE.DoubleSide, transparent: true } );
+          mesh = new THREE.Mesh( geometry, material );
+          // meshesh.append(mesh)
 
           mesh.position.set( 0, 0, 0 );
+          mesh.class = "pierre_stomach";
           mesh.scale.multiplyScalar( scale );
           rotateObject( mesh, rot.x, rot.y , rot.z );
 
           scene.add( mesh );
+
+          // var test = d3.select(".pierre_stomach");
+          mesh.material.color = new THREE.Color(0xffffff * Math.random());
+          mesh.material.needsUpdate = true;
+          // console.log(test);
 
         });
       });
