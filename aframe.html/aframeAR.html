@@ -34,16 +34,21 @@
   z-index: 1;
 }
 
-.navbar {
+.navbarrie {
   position:absolute;
+  background-color: rgba(0,0,0,0.5);
   top:0%;
   z-index: 1;
+}
+
+.navbar {
+  color:white;
 }
 
 </style>
 </head>
 <body>
-
+<div class="col-md-12 navbarrie">
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -60,28 +65,28 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>Skin</td>
-                <td>Blood</td>
-                <td>Teeth</td>
-                <td>Hair</td>
+                <td onclick="ChangeStuff('Skin')">Skin</td>
+                <td onclick="ChangeStuff('Blood')">Blood</td>
+                <td onclick="ChangeStuff('Brain')">Brain</td>
+                <td onclick="ChangeStuff('Duodenum')">Duodenum</td>
               </tr>
               <tr>
-                <td>Skin</td>
-                <td>Blood</td>
-                <td>Teeth</td>
-                <td>Hair</td>
+                <td onclick="ChangeStuff('EyeRetina')">Eye Retina</td>
+                <td onclick="ChangeStuff('EyeWhite')">Eye White</td>
+                <td onclick="ChangeStuff('Heart')">Heart</td>
+                <td onclick="ChangeStuff('Ileum')">Ileum</td>
               </tr>
               <tr>
-                <td>Skin</td>
-                <td>Blood</td>
-                <td>Teeth</td>
-                <td>Hair</td>
+                <td onclick="ChangeStuff('Kidney')">Kidney</td>
+                <td onclick="ChangeStuff('LargeIntestine')">Large Intestine</td>
+                <td onclick="ChangeStuff('Liver')">Liver</td>
+                <td onclick="ChangeStuff('Lung')">Lung</td>
               </tr>
               <tr>
-                <td>Skin</td>
-                <td>Blood</td>
-                <td>Teeth</td>
-                <td>Hair</td>
+                <td onclick="ChangeStuff('Nerve')">Nerve</td>
+                <td onclick="ChangeStuff('Skeleton')">Skeleton</td>
+                <td onclick="ChangeStuff('Spleen')">Spleen</td>
+                <td onclick="ChangeStuff('Stomach')">Stomach</td>
               </tr>
             </tbody>
           </table>
@@ -90,7 +95,7 @@
     </div>
   </div>
   </nav>
-
+  </div>
   <input type="button" id="button" value="Change Color" />
   <a-scene embedded arjs="trackingMethod: best;">
     <a-anchor hit-testing-enabled='true'>
@@ -176,6 +181,10 @@
       object.rotateX(degreeX);
       object.rotateY(degreeY);
       object.rotateZ(degreeZ);
+    }
+
+    function ChangeStuff(organ) {
+      console.log(organ);
     }
 
   </script>
