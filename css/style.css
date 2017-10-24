@@ -1,0 +1,134 @@
+.button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 1px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-text-stroke: 1px #929292;
+    color: white;
+    text-shadow:
+      -1px -1px 0 #929292,
+      1px -1px 0 #929292,
+      -1px 1px 0 #929292,
+      1px 1px 0 #929292;
+}
+
+#a-scene {
+  position: absolute;
+}
+#canvas {
+  position: absolute;
+  background-color:lightgrey
+}
+#button {
+  position:absolute;
+  left:0%;
+  top:0%;
+  z-index: 1;
+}
+
+.sticky-top { margin-right: -33px; }
+
+.navbarrie {
+  position:fixed;
+  background-color: rgba(0,0,0,0.5);
+  top:0%;
+  z-index: 1;
+}
+.navbar-brand {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.dropdown-menu {
+  background-color: rgba(0,0,0,0);
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 0px solid rgba(0,0,0,0.5);
+  padding: 0;
+}
+.navbar {
+  color:white;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+#s .tick:last-of-type text,
+#l .tick:last-of-type text {
+  display: none;
+}
+
+.channel canvas {
+  float: left;
+  margin: 1px 0px 0px 0px;
+  width: 250px;
+  height: 30px;
+}
+.aspectwrapper {
+  display: inline-block; /* shrink to fit */
+  width: 100%;           /* whatever width you like */
+  position: relative;    /* so .content can use position: absolute */
+}
+.aspectwrapper::after {
+  padding-top: 56.25%; /* percentage of containing block _width_ */
+  display: block;
+  content: '';
+}
+.content {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;  /* follow the parent's edges */
+  outline: thin dashed green;            /* just so you can see the box */
+}
+
+.slider {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.slider-tray {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  border: solid 1px #ccc;
+  border-top-color: #aaa;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.slider-handle {
+  position: absolute;
+  top: 3px;
+}
+
+.slider-handle-icon {
+  width: 14px;
+  height: 14px;
+  border: solid 1px #aaa;
+  position: absolute;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  top: -7px;
+  left: -7px;
+}
+
+body, video {
+  margin-left: 0px !important;
+}
+
+::selection {
+};
+
+::-moz-selection{};

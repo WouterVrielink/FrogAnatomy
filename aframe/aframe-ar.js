@@ -6661,23 +6661,23 @@ var ARjs = ARjs || {}
 //    ARjs.AnchorDebugUI
 //////////////////////////////////////////////////////////////////////////////
 
-/**
- * Create an debug UI for an ARjs.Anchor
- * 
- * @param {ARjs.Anchor} arAnchor - the anchor to user
- */
-ARjs.AnchorDebugUI = function(arAnchor){
-  var _this = this 
-  var arSession = arAnchor.arSession
-  var trackingBackend = arSession.arContext.parameters.trackingBackend
-  
-  this.domElement = document.createElement('div')
-  this.domElement.style.color = 'rgba(0,0,0,0.9)'
-  this.domElement.style.backgroundColor = 'rgba(127,127,127,0.5)'
-  this.domElement.style.display = 'inline-block'
-  this.domElement.style.padding = '0.5em'
-  this.domElement.style.margin = '0.5em'
-  this.domElement.style.textAlign = 'left'
+// /**
+//  * Create an debug UI for an ARjs.Anchor
+//  * 
+//  * @param {ARjs.Anchor} arAnchor - the anchor to user
+//  */
+// ARjs.AnchorDebugUI = function(arAnchor){
+//   var _this = this 
+//   var arSession = arAnchor.arSession
+//   var trackingBackend = arSession.arContext.parameters.trackingBackend
+// }
+//   this.domElement = document.createElement('div')
+//   this.domElement.style.color = 'rgba(0,0,0,0.9)'
+//   this.domElement.style.backgroundColor = 'rgba(127,127,127,0.5)'
+//   this.domElement.style.display = 'inline-block'
+//   this.domElement.style.padding = '0.5em'
+//   this.domElement.style.margin = '0.5em'
+//   this.domElement.style.textAlign = 'left'
 
 //   // //////////////////////////////////////////////////////////////////////////////
 //   // //    add title
@@ -6703,21 +6703,21 @@ ARjs.AnchorDebugUI = function(arAnchor){
 //   // //    toggle-marker-helper
 //   // //////////////////////////////////////////////////////////////////////////////
 
-  if( arAnchor.parameters.markersAreaEnabled ){
-    var domElement = document.createElement('button')
-    domElement.style.display = 'block'
-    this.domElement.appendChild(domElement)
+  // if( arAnchor.parameters.markersAreaEnabled ){
+  //   var domElement = document.createElement('button')
+  //   domElement.style.display = 'block'
+  //   this.domElement.appendChild(domElement)
 
-    domElement.id= 'buttonToggleMarkerHelpers'
-    domElement.innerHTML = 'toggle-marker-helper'
-    domElement.href='javascript:void(0)'
+  //   domElement.id= 'buttonToggleMarkerHelpers'
+  //   domElement.innerHTML = 'toggle-marker-helper'
+  //   domElement.href='javascript:void(0)'
 
-    var subMarkerHelpersVisible = false
-    domElement.addEventListener('click', function(){
-      subMarkerHelpersVisible = subMarkerHelpersVisible ? false : true
-      arAnchor.markersArea.setSubMarkersVisibility(subMarkerHelpersVisible)   
-    })
-  }
+  //   var subMarkerHelpersVisible = false
+  //   domElement.addEventListener('click', function(){
+  //     subMarkerHelpersVisible = subMarkerHelpersVisible ? false : true
+  //     arAnchor.markersArea.setSubMarkersVisibility(subMarkerHelpersVisible)   
+  //   })
+  // }
   
 //   // //////////////////////////////////////////////////////////////////////////////
 //   // //    Learn-new-marker-area
@@ -6756,7 +6756,7 @@ ARjs.AnchorDebugUI = function(arAnchor){
 //   //     location.reload()
 //   //   })
 //   // }
-}
+// }
 // @namespace
 var ARjs = ARjs || {}
 
@@ -8093,8 +8093,8 @@ AFRAME.registerComponent('arjs-anchor', {
           document.body.appendChild(containerElement)
         }
         // create anchorDebugUI
-        var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
-        containerElement.appendChild(anchorDebugUI.domElement)    
+        // var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
+        // containerElement.appendChild(anchorDebugUI.domElement)    
       }
     }, 1000/60)
   },
