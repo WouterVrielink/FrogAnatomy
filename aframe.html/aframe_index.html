@@ -2,22 +2,33 @@
 <html>
 <head>
   <title>Aframe</title>
-  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="../aframe/aframe.min.js"></script>
   <script src='../three/js/libs/inflate.min.js'></script>
   <script src="../three/build/three.js"></script>
   <script src="../three/js/controls/TrackballControls.js"></script>
   <script src="../three/js/loaders/VTKLoader.js"></script>
   <script src="../three/js/Detector.js"></script>
   <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
+  <script src="../js/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript">d4 = d3</script>
+  <script src="../js/d3.v3.min.js" charset="utf-8"></script>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <style type="text/css">
+
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+     <style type="text/css">
     body {
       text-align: center;
       margin: 0;
     }
     .bg-1 {
-    background-color: #1abc9c; /* Green */
-    color: #ffffff;
+    background-color: #D3D3D3; /* Green */
+    color: #555555;
     }
     .bg-2 {
         background-color: #474e5d; /* Dark Blue */
@@ -39,15 +50,63 @@
       position:absolute;
     }
     a-scene {
-      width:500px;
-      height: 500px;
+      margin: auto;
+      width: 50%;
+      height:500px;
+      left: 25%;
+      margin-bottom: 50px;
     }
+    p {font-size: 16px;
+    margin-left: 5%;
+    margin-right: 5%;}
+.margin {margin-bottom: 35px;
+         margin-top: 15px}
   </style>
 </head>
 <body>
-
-  <a-scene embedded width="500px" height="500px" id="canvas">
-  </a-scene>
+<div class="col-md-12 navbarrie sticky-top ">
+<nav class="navbar navbar-fixed-top navbar-toggleable-md navbar-dark bg-faded sticky-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Pierre</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="aframeAR.html">Pierre AR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="'pierre_report.pdf'">Report</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="aframe_references.html">References</a>
+      </li>
+    </div>
+  </div>
+  </nav>
+  </div>
+  <div class="container-fluid bg-1 text-center">
+    <h1 style="margin-bottom:12px;">Welcome to Pierre</h1>
+    <h3>A fully interactive augmented reality frog</h3>
+    <h5> giving you the ability to dissect without killing</h5>
+  </div>
+  <div class="container-fluid bg-3 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Pierre the frog is a fun and interactive learning tool to help people understand the biology of animals. Pierre is aimed at providing people with the ability to explore the anatomy of a frog. With this virtual dissection tool within an interactive and intuïtive user interface. Making real frog disection obsolete, and ofcourse, saving many innocent froggy lives.</p>
+        </div><div class="col-md-6">
+        <p>The Pierre frog experience is based on The “Whole Frog Project” and was conducted in 1993-1995 by the Lawrence Berkeley National Laboratory who have provided the data for Pierre to be formed. Our implementation is a mixture of JavaScript libraries like A-frame, Three.js and D3.js in combination with Bootstrap. These libraries ensure that a positive user experience is provided. The froggs can be examined in 3d, virtual reality as is shown in the bottom of this page, but the real crown jewel is the augmented reality option.</p>
+        <div>
+        </div>
+      </div>
+    </div>
+    <p>To enjoy the "Pierre Experience" an <a href="https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg">icon has to be downloaded first</a>. It is advisable to print this out or to display it on another screen when starting to work with Pierre, as it is necessary to point a camera towards the icon for our froggy friend to appear. </p>
+        <p><a href="aframeAR.html">Click here to experience Pierre in augmented reality.</a> It will be as if he is in the room!</p>
+  </div>
+  <div class="container">
+    <a-scene embedded id="canvas"></a-scene>
+  </div>
 
   <script>
 var meshesh = {};

@@ -46,7 +46,7 @@ function init() {
   var scale = 0.002;
 
   var loader1 = new THREE.VTKLoader();
-  loader1.load( '../vtkaas/pierre_t_s_d.vtk', function ( geometry ) {
+  loader1.load( '../vtkaas/pierre_skeleton.vtk', function ( geometry ) {
 
     geometry.computeVertexNormals();
     geometry.center();
@@ -62,7 +62,20 @@ function init() {
 
     scene.add( mesh );
 
-    load_vtk('../vtkaas/pierre_t_s_d_stomach.vtk', scene, rot, scale, beeybeey, 0x858500, 1, "Stomach");
+    load_vtk('../vtkaas/pierre_blood.vtk', scene, rot, scale, beeybeey, "red", 1, "Blood");
+    load_vtk('../vtkaas/pierre_brain.vtk', scene, rot, scale, beeybeey, "#a32030", 1, "Brain");
+    load_vtk('../vtkaas/pierre_duodenum.vtk', scene, rot, scale, beeybeey, "#998b58", 1, "Duodenum");
+    load_vtk('../vtkaas/pierre_eye_retina.vtk', scene, rot, scale, beeybeey, "#f4ee42", 1, "EyeRetina");
+    load_vtk('../vtkaas/pierre_eye_white.vtk', scene, rot, scale, beeybeey, "white", 1, "EyeWhite");
+    load_vtk('../vtkaas/pierre_heart.vtk', scene, rot, scale, beeybeey, "#ff3030", 1, "Heart");
+    load_vtk('../vtkaas/pierre_illeum.vtk', scene, rot, scale, beeybeey, "#8357a5", 1, "Ileum");
+    load_vtk('../vtkaas/pierre_kidney.vtk', scene, rot, scale, beeybeey, "#a51818", 1, "Kidney");
+    load_vtk('../vtkaas/pierre_l_intestine.vtk', scene, rot, scale, beeybeey, "#f9fc37", 1, "LargeIntestine");
+    load_vtk('../vtkaas/pierre_liver.vtk', scene, rot, scale, beeybeey, "#9e2525", 1, "Liver");
+    load_vtk('../vtkaas/pierre_lungs.vtk', scene, rot, scale, beeybeey, "#8482ff", 1, "Lungs");
+    load_vtk('../vtkaas/pierre_nerve.vtk', scene, rot, scale, beeybeey, "#feffef", 1, "Nerve");
+    load_vtk('../vtkaas/pierre_spleen.vtk', scene, rot, scale, beeybeey, "#efa5e9", 1, "Spleen");
+    load_vtk('../vtkaas/pierre_stomach.vtk', scene, rot, scale, beeybeey, "#ba9e23", 1, "Stomach");
 
   });
 }
@@ -163,11 +176,11 @@ function render(d) {
   context.putImageData(image, 0, 0);
 }
 
-// var width_slider = 230;
+var width_slider = 230;
 
 var x = d3.scale.linear()
-    .domain([100, 1])
-    .range([width_slider, 0])
+    .domain([1, 100])
+    .range([0, width_slider])
     .clamp(true);
 
 var dispatch = d3.dispatch("sliderChange");
