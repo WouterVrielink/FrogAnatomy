@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aframe</title>
+  <script src="../aframe/aframe.min.js"></script>
+  <script src='../three/js/libs/inflate.min.js'></script>
+  <script src="../three/build/three.js"></script>
+  <script src="../three/js/controls/TrackballControls.js"></script>
+  <script src="../three/js/loaders/VTKLoader.js"></script>
+  <script src="../three/js/Detector.js"></script>
+  <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
+  <script src="../js/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript">d4 = d3</script>
+  <script src="../js/d3.v3.min.js" charset="utf-8"></script>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <script src="../bootstrap/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="../bootstrap/js/popper.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="../css/style.css">
+     <style type="text/css">
+    body {
+      text-align: center;
+      margin: 0;
+    }
+    .bg-1 {
+    background-color: #D3D3D3; /* Green */
+    color: #555555;
+    }
+    .bg-2 {
+        background-color: #474e5d; /* Dark Blue */
+        color: #ffffff;
+    }
+    .bg-3 {
+        background-color: #ffffff; /* White */
+        color: #555555;
+    }
+    .bg-4 {
+        background-color: #2f2f2f; /* Black Gray */
+        color: #fff;
+    }
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    #canvas {
+      position:absolute;
+    }
+    a-scene {
+      margin: auto;
+      width: 50%;
+      height:500px;
+      left: 25%;
+      margin-bottom: 50px;
+    }
+    p {font-size: 16px;
+    margin-left: 5%;
+    margin-right: 5%;}
+.margin {margin-bottom: 35px;
+         margin-top: 15px}
+  </style>
+</head>
+<body>
+<div class="col-md-12 navbarrie sticky-top ">
+<nav class="navbar navbar-fixed-top navbar-toggleable-md navbar-dark bg-faded sticky-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="aframe_index.html">Pierre</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="aframeAR.html">Pierre AR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="'pierre_report.pdf'">Report</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" onmouseover="" style="cursor: pointer;" href="aframe_references.html">References</a>
+      </li>
+    </div>
+  </div>
+  </nav>
+  </div>
+  <div class="container-fluid bg-1 text-center">
+    <h1 style="margin-bottom:12px;">Welcome to Pierre</h1>
+    <h3>References</h3>
+  </div>
+  <div class="container-fluid bg-3 text-center">
+  <h5 style="margin-bottom:50px;">There are some who we would like to thank:</h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p>Robertson, David, William Johnston, and Wing Nip. "Virtual frog dissection: interactive
+3D graphics via the Web." Computer networks and ISDN systems 28.1 (1995): 155-160.<br>
+https://doi.org/10.1016/0169-7552(95)00117-6</p>
+<p></p>
+        </div><div class="col-md-6">
+        <p>The developers at:<p>
+        <p><a href="https://aframe.io/">A-frame</a></p>
+        <p><a href="https://threejs.org/">Three.js</a></p>
+        <p><a href="https://d3js.org/">D3.js</a></p>
+        <p><a href="https://www.vtk.org/">VTK</a></p>
+        <p><a href="https://www.paraview.org/">Paraview</a></p>
+        <div>
+        </div>
+      </div>
+    </div>  </div>
+</body>
+</html>
