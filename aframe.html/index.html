@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<!--
+	Solid by gettemplates.co
+	Twitter: http://twitter.com/gettemplateco
+	URL: http://gettemplates.co
+-->
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Pierre</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="gettemplates.co" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="font-mfizz-2.4.1/font-mfizz.css">
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	<script src="../aframe/aframe.min.js"></script>
+  <script src='../three/js/libs/inflate.min.js'></script>
+  <script src="../three/build/three.js"></script>
+  <script src="../three/js/controls/TrackballControls.js"></script>
+  <script src="../three/js/loaders/VTKLoader.js"></script>
+  <script src="../three/js/Detector.js"></script>
+  <script src="../three/js/libs/stats.min.js"></script>  <meta charset="utf-8">
+  <script src="../js/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script type="text/javascript">d4 = d3</script>
+  <script src="../js/d3.v3.min.js" charset="utf-8"></script>
+
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="page">
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="gtco-logo"><a href="index.html">Pierre.</a></div>
+				</div>
+
+			</div>
+
+		</div>
+	</nav>
+
+	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(images/frog.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Welcome to Pierre</h1>
+							<h2>Made by Bas Ch&#226;tel and Wouter Vrielink</h2>
+							<p>
+								<a href="aframeAR.html" class="btn btn-primary btn-lg">Straight to Pierre</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="gtco-features">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i class="icon-lab-flask"></i>
+						</span>
+						<h3>Learning</h3>
+						<p>Learn about the anatomy of a frog by interactively dissecting it.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i class="icon-heart"></i>
+						</span>
+						<h3>Spare a life</h3>
+						<p>Because this is a virtual frog, real frog dissecting practicals are obsolete! </p>					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i class="icon-emoji-happy"></i>
+						</span>
+						<h3>Fun to use</h3>
+						<p>Pierre is an interactive 3d and highly customizable frog, play around with him and don't be affraid to alter some colors.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="gtco-features-2">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Get acquainted with Pierre</h2>
+					<p>In this section it is possible to play around with Pierre in a 3D environment. If you click the bottom right icon, he will go fullscreen or even as a virtual reality object depending on your device.</p>
+				</div>
+			</div>
+
+	    <a-scene embedded id="canvas"></a-scene>
+			<script>
+var meshesh = {};
+init();
+function init() {
+  var scene = document.querySelector('a-scene').object3D;
+  var height = 600;
+  var width = 600;
+  canvas.width  = width;
+  canvas.height = height;
+  // var renderer = new THREE.WebGLRenderer({canvas: scene});
+  // renderer.setViewport(0, 0, width, height);
+  var beeybeey;
+  var rot = { x: 90, y: 0, z: 0 };
+  var scale = 0.002;
+
+  var loader1 = new THREE.VTKLoader();
+  loader1.load( '../vtkaas/pierre_skeleton.vtk', function ( geometry ) {
+
+    geometry.computeVertexNormals();
+    geometry.center();
+    beeybeey = geometry.boundingBox.min;
+
+    var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
+    var mesh = new THREE.Mesh( geometry, material );
+    meshesh["Skeleton"] = mesh;
+
+    mesh.position.set( 0, 1.25, -1 );
+    mesh.scale.multiplyScalar( scale );
+    rotateObject( mesh, rot.x, rot.y , rot.z );
+
+    scene.add( mesh );
+
+    load_vtk('../vtkaas/pierre_blood.vtk', scene, rot, scale, beeybeey, "red", 1, "Blood");
+    load_vtk('../vtkaas/pierre_brain.vtk', scene, rot, scale, beeybeey, "#a32030", 1, "Brain");
+    load_vtk('../vtkaas/pierre_duodenum.vtk', scene, rot, scale, beeybeey, "#998b58", 1, "Duodenum");
+    load_vtk('../vtkaas/pierre_eye_retina.vtk', scene, rot, scale, beeybeey, "#f4ee42", 1, "EyeRetina");
+    load_vtk('../vtkaas/pierre_eye_white.vtk', scene, rot, scale, beeybeey, "white", 1, "EyeWhite");
+    load_vtk('../vtkaas/pierre_heart.vtk', scene, rot, scale, beeybeey, "#ff3030", 1, "Heart");
+    load_vtk('../vtkaas/pierre_illeum.vtk', scene, rot, scale, beeybeey, "#8357a5", 1, "Ileum");
+    load_vtk('../vtkaas/pierre_kidney.vtk', scene, rot, scale, beeybeey, "#a51818", 1, "Kidney");
+    load_vtk('../vtkaas/pierre_l_intestine.vtk', scene, rot, scale, beeybeey, "#f9fc37", 1, "LargeIntestine");
+    load_vtk('../vtkaas/pierre_liver.vtk', scene, rot, scale, beeybeey, "#9e2525", 1, "Liver");
+    load_vtk('../vtkaas/pierre_lungs.vtk', scene, rot, scale, beeybeey, "#8482ff", 1, "Lungs");
+    load_vtk('../vtkaas/pierre_nerve.vtk', scene, rot, scale, beeybeey, "#feffef", 1, "Nerve");
+    load_vtk('../vtkaas/pierre_spleen.vtk', scene, rot, scale, beeybeey, "#efa5e9", 1, "Spleen");
+    load_vtk('../vtkaas/pierre_stomach.vtk', scene, rot, scale, beeybeey, "#ba9e23", 1, "Stomach");
+
+  });
+}
+
+function load_vtk(fileName, scene, rot, scale, beeybeey, color, opacity, index) {
+  var loader = new THREE.VTKLoader();
+
+  loader.load( fileName, function ( geometry ) {
+
+    geometry.computeVertexNormals();
+    geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z);
+
+    var material = new THREE.MeshLambertMaterial( { color: color, opacity: opacity, side: THREE.DoubleSide } );
+    var mesh = new THREE.Mesh( geometry, material );
+    meshesh[index] = mesh;
+
+    mesh.position.set( 0, 1.25, -1 );
+    mesh.scale.multiplyScalar( scale );
+    rotateObject( mesh, rot.x, rot.y, rot.z );
+
+    scene.add( mesh );
+  });
+
+  return beeybeey ;
+}
+
+function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0) {
+  degreeX = (degreeX * Math.PI) / 180;
+  degreeY = (degreeY * Math.PI) / 180;
+  degreeZ = (degreeZ * Math.PI) / 180;
+
+  object.rotateX(degreeX);
+  object.rotateY(degreeY);
+  object.rotateZ(degreeZ);
+}
+
+
+    </script>
+		</div>
+	</div>
+
+	<div id="gtco-counter" class="gtco-bg gtco-cover gtco-counter" style="background-image:url(images/img_bg_2.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<h1 style="margin-top:75px; color:white; margin-bottom:0px;">With special thanks to:</h1>
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="https://d3js.org/">
+								<span class="icon">
+									<i class="icon-d3"></i>
+								</span>
+								<span class="counter-label">D3.js</span></a>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="https://aframe.io/">
+								<span class="icon">
+									<img height="67px" src="images/aframe.ico">
+								</span>
+								<span class="counter-label">Aframe</span></a>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="https://threejs.org/">
+								<span class="icon">
+									<img height="67px" src="images/three.png">
+								</span>
+								<span class="counter-label">Three.js</span></a>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="https://www.paraview.org/">
+								<span class="icon">
+									<img height="67px" src="images/paraview.png">
+								</span>
+								<span class="counter-label">Paraview</span></a>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="https://www.vtk.org/">
+								<span class="icon">
+									<img height="67px" src="images/vtk.png">
+								</span>
+								<span class="counter-label">VTK</span></a>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-6 animate-box">
+							<div class="feature-center">
+								<a target="_blank" href="http://froggy.lbl.gov/cgi-bin/dissect">
+								<span class="icon">
+									<img height="67px" src="images/berkeley.jpg">
+								</span>
+								<span class="counter-label">Berkeley Lab</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="gtco-services">
+		<div class="gtco-container">
+
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading" style="margin-bottom:0px;">
+					<h2>How it works</h2>
+					<p>There are a few steps that need to be prepared to fully enjoy the "Pierre experience".</p>
+				</div>
+			</div>
+
+			<div class="row animate-box">
+
+				<div class="gtco-tabs">
+
+					<!-- Tabs -->
+					<div class="gtco-tab-content-wrap">
+
+						<div class="gtco-tab-content tab-content active" data-tab-content="1">
+							<div class="col-md-6">
+								<a href="../hiro.jpg"><img src="../hiro.jpg"></a>
+							</div>
+							<div class="col-md-6">
+								<h2>Hiro Marker</h2>
+								<p>For augmented reality to work, we need a marker to "paste" Pierre on. This way Pierre will react and follow the marker. Here is where Hiro comes in. Hiro is a marker used by the A-frame software tracking the contours and visualizing our beloved little critter.</p>
+
+								<p>It is best to print Hiro out, but it is also possible to open it on another screen while a second device is used to run Pierre himself. Sounds a bit "device-ception" but it does the trick!</p>
+
+								<div class="row">
+									<div class="col-md-6">
+										<h2 class="uppercase">Click on Hiro</h2>
+										<p>Click and print the picture.</p>
+									</div>
+									<div class="col-md-6">
+										<h2 class="uppercase">Open Pierre</h2>
+										<p>Open the Pierre tab and point your camera to Hiro to see the magic happen.</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="gtco-subscribe">
+		<div class="gtco-container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h2>Discover Pierre yourself</h2>
+					<a href="aframeAR.html" class="btn btn-primary btn-lg">Straight to Pierre</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+						<small class="block">Designed by <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
