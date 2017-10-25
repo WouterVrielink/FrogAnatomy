@@ -26,7 +26,7 @@ $('li.coloring').on('click', function(event){
           events[i].handler.call(event.target, event);
       }
 
-      // Check if any of the clicked element parents matches the 
+      // Check if any of the clicked element parents matches the
       // delegated event selector (Emulating propagation)
       $(event.target).parents(events[i].selector).each(function(){
           events[i].handler.call(this, event);
@@ -50,18 +50,21 @@ function init() {
 
     geometry.computeVertexNormals();
     geometry.center();
-    beeybeey = geometry.boundingBox.min;
+    geometry.computeBoundingBox();
+    beeybeey = geometry.boundingBox.min.clone();
+    // geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z);
 
-    var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
+    var material = new THREE.MeshLambertMaterial( { color:0xf0f0f0, opacity:1, side: THREE.DoubleSide } );
     var mesh = new THREE.Mesh( geometry, material );
     meshesh["Skeleton"] = mesh;
 
-    mesh.position.set( 0, 0, 0 );
     mesh.scale.multiplyScalar( scale );
-    rotateObject( mesh, rot.x, rot.y , rot.z );
+    // rotateObject( mesh, rot.x, rot.y , rot.z );
 
     scene.add( mesh );
 
+    load_vtk('../vtkaas/pierre_skin.vtk', scene, rot, scale, beeybeey, "#00ff00", 1, "Skin");
+    // load_vtk('../vtkaas/pierre_skeleton.vtk', scene, rot, scale, beeybeey, "#f0f0f0", 1, "Skeleton");
     load_vtk('../vtkaas/pierre_blood.vtk', scene, rot, scale, beeybeey, "red", 1, "Blood");
     load_vtk('../vtkaas/pierre_brain.vtk', scene, rot, scale, beeybeey, "#a32030", 1, "Brain");
     load_vtk('../vtkaas/pierre_duodenum.vtk', scene, rot, scale, beeybeey, "#998b58", 1, "Duodenum");
@@ -77,6 +80,7 @@ function init() {
     load_vtk('../vtkaas/pierre_spleen.vtk', scene, rot, scale, beeybeey, "#efa5e9", 1, "Spleen");
     load_vtk('../vtkaas/pierre_stomach.vtk', scene, rot, scale, beeybeey, "#ba9e23", 1, "Stomach");
 
+
   });
 }
 
@@ -86,6 +90,7 @@ function load_vtk(fileName, scene, rot, scale, beeybeey, color, opacity, index) 
   loader.load( fileName, function ( geometry ) {
 
     geometry.computeVertexNormals();
+    geometry.computeBoundingBox()
     geometry.translate(beeybeey.x, beeybeey.y, beeybeey.z);
 
     var material = new THREE.MeshLambertMaterial( { color: color, opacity: opacity, side: THREE.DoubleSide } );
@@ -94,7 +99,7 @@ function load_vtk(fileName, scene, rot, scale, beeybeey, color, opacity, index) 
 
     mesh.position.set( 0, 0, 0 );
     mesh.scale.multiplyScalar( scale );
-    rotateObject( mesh, rot.x, rot.y, rot.z );
+    // rotateObject( mesh, rot.x, rot.y, rot.z );
 
     scene.add( mesh );
   });

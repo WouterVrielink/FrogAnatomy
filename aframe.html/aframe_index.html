@@ -96,7 +96,7 @@
       <div class="col-md-6">
         <p>Pierre the frog is a fun and interactive learning tool to help people understand the biology of animals. Pierre is aimed at providing people with the ability to explore the anatomy of a frog. With this virtual dissection tool within an interactive and intuïtive user interface. Making real frog disection obsolete, and ofcourse, saving many innocent froggy lives.</p>
         </div><div class="col-md-6">
-        <p>The Pierre frog experience is based on The “Whole Frog Project” and was conducted in 1993-1995 by the Lawrence Berkeley National Laboratory who have provided the data for Pierre to be formed. Our implementation is a mixture of JavaScript libraries like A-frame, Three.js and D3.js in combination with Bootstrap. These libraries ensure that a positive user experience is provided. The froggs can be examined in 3d, virtual reality as is shown in the bottom of this page, but the real crown jewel is the augmented reality option.</p>
+        <p>The Pierre frog experience is based on The “Whole Frog Project” and was conducted in 1993-1995 by the Lawrence Berkeley National Laboratory who have provided the data for Pierre to be formed. Our implementation is a mixture of JavaScript libraries like A-frame, Three.js and D3.js in combination with Bootstrap. These libraries ensure that a positive user experience is provided. The frogs can be examined in 3d, virtual reality as is shown in the bottom of this page, but the real crown jewel is the augmented reality option.</p>
         <div>
         </div>
       </div>
@@ -128,9 +128,10 @@ function init() {
 
     geometry.computeVertexNormals();
     geometry.center();
+    // geometry.computeBoundingBox();
     beeybeey = geometry.boundingBox.min;
 
-    var material = new THREE.MeshLambertMaterial( { color: 0xf0f0f0, side: THREE.DoubleSide } );
+    var material = new THREE.MeshLambertMaterial( { color:0xf0f0f0, opacity:1, side: THREE.DoubleSide } );
     var mesh = new THREE.Mesh( geometry, material );
     meshesh["Skeleton"] = mesh;
 
@@ -140,6 +141,8 @@ function init() {
 
     scene.add( mesh );
 
+    load_vtk('../vtkaas/pierre_skin.vtk', scene, rot, scale, beeybeey, "#00ff00", 1, "Skin");
+    // load_vtk('../vtkaas/pierre_skeleton.vtk', scene, rot, scale, beeybeey, "#f0f0f0", 1, "Skeleton");
     load_vtk('../vtkaas/pierre_blood.vtk', scene, rot, scale, beeybeey, "red", 1, "Blood");
     load_vtk('../vtkaas/pierre_brain.vtk', scene, rot, scale, beeybeey, "#a32030", 1, "Brain");
     load_vtk('../vtkaas/pierre_duodenum.vtk', scene, rot, scale, beeybeey, "#998b58", 1, "Duodenum");
@@ -181,9 +184,9 @@ function load_vtk(fileName, scene, rot, scale, beeybeey, color, opacity, index) 
 }
 
 function rotateObject(object,degreeX=0, degreeY=0, degreeZ=0) {
-  degreeX = (degreeX * Math.PI) / 180;
-  degreeY = (degreeY * Math.PI) / 180;
-  degreeZ = (degreeZ * Math.PI) / 180;
+  degreeX = (degreeX * Math.PI) / 180.;
+  degreeY = (degreeY * Math.PI) / 180.;
+  degreeZ = (degreeZ * Math.PI) / 180.;
 
   object.rotateX(degreeX);
   object.rotateY(degreeY);
