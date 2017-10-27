@@ -77,7 +77,7 @@ function init() {
     load_vtk(pivot, '../vtkaas/pierre_spleen.vtk', scene, rot, scale, beeybeey, "#efa5e9", 1, "Spleen");
     load_vtk(pivot, '../vtkaas/pierre_stomach.vtk', scene, rot, scale, beeybeey, "#ba9e23", 1, "Stomach");
 
-    pivot.position.set( -0.5, 1.75, -2 );
+    // pivot.position.set( -0.5, 1.75, -2 );
     rotateObject( pivot, rot.x, rot.y, rot.z);
 
   });
