@@ -98,7 +98,7 @@
 
 .slider-tray {
   position: absolute;
-  width: 100%;
+  width: 100% !important;
   height: 6px;
   border: solid 1px #ccc;
   border-top-color: #aaa;
