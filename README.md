@@ -1,4 +1,4 @@
-# BasEnWouterOpAvontuur
+# Frog Anatomy
 
 In this project we explored a multitude of ways to study the anatomy of a frog. Specifically in a virtual setting, making real hands-on frog practicals obsolete.
 
